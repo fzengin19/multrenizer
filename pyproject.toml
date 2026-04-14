@@ -1,0 +1,22 @@
+[project]
+name = "multrenizer"
+version = "0.1.0"
+description = "Bilingual English-Turkish Unigram tokenizer with Turkish locale-aware normalization"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+dependencies = [
+    "tokenizers>=0.20.0",
+    "transformers>=4.40.0",
+    "datasets>=3.0.0",
+    "huggingface_hub>=0.25.0",
+    "protobuf>=5.0.0",
+    "sentencepiece>=0.2.0",
+]
+
+[project.scripts]
+multrenizer = "train_tokenizer:main"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"

@@ -1,0 +1,18 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+dist/
+build/
+.codex
+*.log
+
+# Corpus data (large, downloaded by prepare_data.py)
+data/
+
+
+

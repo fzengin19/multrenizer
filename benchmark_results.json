@@ -1,0 +1,1845 @@
+{
+  "config": {
+    "tr_sentences": 5000,
+    "en_sentences": 5000,
+    "cs_sentences": 500,
+    "tokenizers": {
+      "Multrenizer": {
+        "type": "local",
+        "path": "./multrenizer-tokenizer",
+        "vocab": 25917,
+        "algo": "Unigram",
+        "desc": "Bilingual EN-TR, Turkish-aware normalization"
+      },
+      "Kumru-2B": {
+        "type": "hub",
+        "model_id": "vngrs-ai/Kumru-2B",
+        "vocab": 50176,
+        "algo": "BPE",
+        "desc": "Turkish LLM tokenizer (VNGRS, Sep 2025, Mistral-based)"
+      },
+      "Turkcell-7B": {
+        "type": "hub",
+        "model_id": "TURKCELL/Turkcell-LLM-7b-v1",
+        "vocab": 48351,
+        "algo": "BPE",
+        "desc": "Turkish LLM tokenizer (Turkcell, Apr 2024, Mistral-based)"
+      },
+      "GPT-2": {
+        "type": "hub",
+        "model_id": "openai-community/gpt2",
+        "vocab": 50257,
+        "algo": "BPE",
+        "desc": "English-centric baseline (OpenAI, 2019)"
+      },
+      "Qwen-3": {
+        "type": "hub",
+        "model_id": "Qwen/Qwen3-0.6B",
+        "vocab": 151643,
+        "algo": "BPE",
+        "desc": "Multilingual (Alibaba, 2025)"
+      },
+      "Mistral-3.1": {
+        "type": "hub",
+        "model_id": "mistralai/Mistral-Small-3.1-24B-Base-2503",
+        "vocab": 131072,
+        "algo": "BPE/SentencePiece",
+        "desc": "Multilingual (Mistral AI, Mar 2025)"
+      }
+    }
+  },
+  "metrics": {
+    "TR_fertility": {
+      "Multrenizer": 1.627,
+      "Kumru-2B": 1.649,
+      "Turkcell-7B": 1.917,
+      "GPT-2": 3.785,
+      "Qwen-3": 2.616,
+      "Mistral-3.1": 2.384
+    },
+    "TR_compression": {
+      "Multrenizer": 4.783,
+      "Kumru-2B": 4.719,
+      "Turkcell-7B": 4.06,
+      "GPT-2": 2.056,
+      "Qwen-3": 2.976,
+      "Mistral-3.1": 3.265
+    },
+    "TR_total_tokens": {
+      "Multrenizer": 130844,
+      "Kumru-2B": 132637,
+      "Turkcell-7B": 154166,
+      "GPT-2": 304345,
+      "Qwen-3": 210334,
+      "Mistral-3.1": 191682
+    },
+    "EN_fertility": {
+      "Multrenizer": 1.525,
+      "Kumru-2B": 2.151,
+      "Turkcell-7B": 1.555,
+      "GPT-2": 1.314,
+      "Qwen-3": 1.372,
+      "Mistral-3.1": 1.381
+    },
+    "EN_compression": {
+      "Multrenizer": 4.148,
+      "Kumru-2B": 2.942,
+      "Turkcell-7B": 4.068,
+      "GPT-2": 4.816,
+      "Qwen-3": 4.61,
+      "Mistral-3.1": 4.58
+    },
+    "EN_total_tokens": {
+      "Multrenizer": 157027,
+      "Kumru-2B": 221420,
+      "Turkcell-7B": 160121,
+      "GPT-2": 135235,
+      "Qwen-3": 141275,
+      "Mistral-3.1": 142196
+    },
+    "CS_fertility": {
+      "Multrenizer": 1.756,
+      "Kumru-2B": 1.923,
+      "Turkcell-7B": 1.832,
+      "GPT-2": 3.475,
+      "Qwen-3": 2.445,
+      "Mistral-3.1": 2.479
+    },
+    "CS_compression": {
+      "Multrenizer": 4.432,
+      "Kumru-2B": 4.047,
+      "Turkcell-7B": 4.25,
+      "GPT-2": 2.24,
+      "Qwen-3": 3.183,
+      "Mistral-3.1": 3.14
+    },
+    "CS_total_tokens": {
+      "Multrenizer": 5525,
+      "Kumru-2B": 6050,
+      "Turkcell-7B": 5762,
+      "GPT-2": 10933,
+      "Qwen-3": 7693,
+      "Mistral-3.1": 7799
+    }
+  },
+  "vocab_efficiency": {
+    "Multrenizer": 5.05,
+    "Kumru-2B": 2.64,
+    "Turkcell-7B": 3.19,
+    "GPT-2": 6.06,
+    "Qwen-3": 1.39,
+    "Mistral-3.1": 1.46
+  },
+  "morphology": [
+    {
+      "word": "güzelleştirilmiş",
+      "ideal": "güzel + leştir + il + miş",
+      "Multrenizer": {
+        "tokens": [
+          "güzel",
+          "leştirilmiş"
+        ],
+        "count": 2
+      },
+      "Kumru-2B": {
+        "tokens": [
+          "gÃ¼zel",
+          "leÅŁtirilmiÅŁ"
+        ],
+        "count": 2
+      },
+      "Turkcell-7B": {
+        "tokens": [
+          "güzel",
+          "leştirilmiş"
+        ],
+        "count": 2
+      },
+      "GPT-2": {
+        "tokens": [
+          "g",
+          "Ã¼",
+          "z",
+          "elle",
+          "ÅŁ",
+          "t",
+          "ir",
+          "il",
+          "mi",
+          "ÅŁ"
+        ],
+        "count": 10
+      },
+      "Qwen-3": {
+        "tokens": [
+          "g",
+          "Ã¼z",
+          "elle",
+          "ÅŁtir",
+          "ilmiÅŁ"
+        ],
+        "count": 5
+      },
+      "Mistral-3.1": {
+        "tokens": [
+          "g",
+          "Ã¼z",
+          "elle",
+          "ÅŁtir",
+          "ilmiÅŁ"
+        ],
+        "count": 5
+      }
+    },
+    {
+      "word": "evlerimizdekilerin",
+      "ideal": "ev + ler + imiz + deki + ler + in",
+      "Multrenizer": {
+        "tokens": [
+          "evler",
+          "imiz",
+          "deki",
+          "lerin"
+        ],
+        "count": 4
+      },
+      "Kumru-2B": {
+        "tokens": [
+          "ev",
+          "lerimiz",
+          "dek",
+          "ilerin"
+        ],
+        "count": 4
+      },
+      "Turkcell-7B": {
+        "tokens": [
+          "ev",
+          "lerimiz",
+          "dek",
+          "ilerin"
+        ],
+        "count": 4
+      },
+      "GPT-2": {
+        "tokens": [
+          "ev",
+          "ler",
+          "im",
+          "iz",
+          "d",
+          "ek",
+          "iler",
+          "in"
+        ],
+        "count": 8
+      },
+      "Qwen-3": {
+        "tokens": [
+          "ev",
+          "ler",
+          "im",
+          "iz",
+          "dek",
+          "iler",
+          "in"
+        ],
+        "count": 7
+      },
+      "Mistral-3.1": {
+        "tokens": [
+          "ev",
+          "ler",
+          "im",
+          "iz",
+          "dek",
+          "ilerin"
+        ],
+        "count": 6
+      }
+    },
+    {
+      "word": "çalışmalarımızın",
+      "ideal": "çalış + ma + lar + ımız + ın",
+      "Multrenizer": {
+        "tokens": [
+          "çalışmaları",
+          "mızın"
+        ],
+        "count": 2
+      },
+      "Kumru-2B": {
+        "tokens": [
+          "Ã§alÄ±ÅŁma",
+          "larÄ±mÄ±z",
+          "Ä±n"
+        ],
+        "count": 3
+      },
+      "Turkcell-7B": {
+        "tokens": [
+          "çalışmalar",
+          "ımızın"
+        ],
+        "count": 2
+      },
+      "GPT-2": {
+        "tokens": [
+          "Ã§",
+          "al",
+          "Ä±",
+          "ÅŁ",
+          "mal",
+          "ar",
+          "Ä±",
+          "m",
+          "Ä±",
+          "z",
+          "Ä±",
+          "n"
+        ],
+        "count": 12
+      },
+      "Qwen-3": {
+        "tokens": [
+          "Ã§",
+          "alÄ±ÅŁ",
+          "m",
+          "alar",
+          "Ä±mÄ±z",
+          "Ä±n"
+        ],
+        "count": 6
+      },
+      "Mistral-3.1": {
+        "tokens": [
+          "Ã§al",
+          "Ä±ÅŁ",
+          "malar",
+          "Ä±m",
+          "Ä±z",
+          "Ä±n"
+        ],
+        "count": 6
+      }
+    },
+    {
+      "word": "okuduklarımdan",
+      "ideal": "oku + duk + lar + ım + dan",
+      "Multrenizer": {
+        "tokens": [
+          "okudu",
+          "kları",
+          "m",
+          "dan"
+        ],
+        "count": 4
+      },
+      "Kumru-2B": {
+        "tokens": [
+          "oku",
+          "duk",
+          "larÄ±m",
+          "dan"
+        ],
+        "count": 4
+      },
+      "Turkcell-7B": {
+        "tokens": [
+          "ok",
+          "ud",
+          "uk",
+          "larımdan"
+        ],
+        "count": 4
+      },
+      "GPT-2": {
+        "tokens": [
+          "ok",
+          "ud",
+          "uk",
+          "lar",
+          "Ä±",
+          "md",
+          "an"
+        ],
+        "count": 7
+      },
+      "Qwen-3": {
+        "tokens": [
+          "ok",
+          "ud",
+          "uk",
+          "larÄ±",
+          "md",
+          "an"
+        ],
+        "count": 6
+      },
+      "Mistral-3.1": {
+        "tokens": [
+          "ok",
+          "uduk",
+          "larÄ±",
+          "md",
+          "an"
+        ],
+        "count": 5
+      }
+    },
+    {
+      "word": "Afyonkarahisarlılaştıramadıklarımızdan",
+      "ideal": "Afyonkarahisar + lı + laş + tır + ama + dık + lar + ımız + dan",
+      "Multrenizer": {
+        "tokens": [
+          "afyonkarahisar",
+          "lı",
+          "laştı",
+          "r",
+          "ama",
+          "dıkları",
+          "mızda",
+          "n"
+        ],
+        "count": 8
+      },
+      "Kumru-2B": {
+        "tokens": [
+          "Af",
+          "yonkarahisar",
+          "lÄ±",
+          "laÅŁtÄ±r",
+          "ama",
+          "dÄ±k",
+          "larÄ±mÄ±z",
+          "dan"
+        ],
+        "count": 8
+      },
+      "Turkcell-7B": {
+        "tokens": [
+          "Afyon",
+          "kar",
+          "ah",
+          "is",
+          "arlı",
+          "laştır",
+          "a",
+          "madık",
+          "larımızdan"
+        ],
+        "count": 9
+      },
+      "GPT-2": {
+        "tokens": [
+          "Af",
+          "yon",
+          "kar",
+          "ah",
+          "is",
+          "arl",
+          "Ä±",
+          "la",
+          "ÅŁ",
+          "t",
+          "Ä±",
+          "ram",
+          "ad",
+          "Ä±",
+          "k",
+          "lar",
+          "Ä±",
+          "m",
+          "Ä±",
+          "z",
+          "dan"
+        ],
+        "count": 21
+      },
+      "Qwen-3": {
+        "tokens": [
+          "Af",
+          "yon",
+          "kar",
+          "ah",
+          "is",
+          "ar",
+          "lÄ±",
+          "la",
+          "ÅŁt",
+          "Ä±",
+          "ram",
+          "ad",
+          "Ä±kl",
+          "ar",
+          "Ä±mÄ±z",
+          "dan"
+        ],
+        "count": 16
+      },
+      "Mistral-3.1": {
+        "tokens": [
+          "Af",
+          "yon",
+          "kar",
+          "ah",
+          "is",
+          "arl",
+          "Ä±",
+          "laÅŁt",
+          "Ä±",
+          "ram",
+          "ad",
+          "Ä±klarÄ±",
+          "m",
+          "Ä±",
+          "zd",
+          "an"
+        ],
+        "count": 16
+      }
+    },
+    {
+      "word": "İstanbul'da",
+      "ideal": "İstanbul + da",
+      "Multrenizer": {
+        "tokens": [
+          "istanbul",
+          "'",
+          "da"
+        ],
+        "count": 3
+      },
+      "Kumru-2B": {
+        "tokens": [
+          "Ä°stanbul",
+          "'",
+          "da"
+        ],
+        "count": 3
+      },
+      "Turkcell-7B": {
+        "tokens": [
+          "İstanbul",
+          "'",
+          "da"
+        ],
+        "count": 3
+      },
+      "GPT-2": {
+        "tokens": [
+          "Ä",
+          "°",
+          "stanbul",
+          "'d",
+          "a"
+        ],
+        "count": 5
+      },
+      "Qwen-3": {
+        "tokens": [
+          "Ä°",
+          "stanbul",
+          "'d",
+          "a"
+        ],
+        "count": 4
+      },
+      "Mistral-3.1": {
+        "tokens": [
+          "Ä°",
+          "stanbul",
+          "'d",
+          "a"
+        ],
+        "count": 4
+      }
+    },
+    {
+      "word": "değerlendirememişlerdi",
+      "ideal": "değer + lendir + eme + miş + ler + di",
+      "Multrenizer": {
+        "tokens": [
+          "değerlendire",
+          "me",
+          "mişlerdi"
+        ],
+        "count": 3
+      },
+      "Kumru-2B": {
+        "tokens": [
+          "deÄŁerlendir",
+          "ememiÅŁ",
+          "lerdi"
+        ],
+        "count": 3
+      },
+      "Turkcell-7B": {
+        "tokens": [
+          "değer",
+          "l",
+          "end",
+          "ir",
+          "ememiş",
+          "lerdi"
+        ],
+        "count": 6
+      },
+      "GPT-2": {
+        "tokens": [
+          "de",
+          "ÄŁ",
+          "er",
+          "l",
+          "end",
+          "ire",
+          "mem",
+          "i",
+          "ÅŁ",
+          "ler",
+          "di"
+        ],
+        "count": 11
+      },
+      "Qwen-3": {
+        "tokens": [
+          "de",
+          "ÄŁer",
+          "l",
+          "end",
+          "ire",
+          "mem",
+          "iÅŁ",
+          "ler",
+          "di"
+        ],
+        "count": 9
+      },
+      "Mistral-3.1": {
+        "tokens": [
+          "de",
+          "ÄŁer",
+          "lend",
+          "irem",
+          "emi",
+          "ÅŁ",
+          "ler",
+          "di"
+        ],
+        "count": 8
+      }
+    },
+    {
+      "word": "kullanılabilirlik",
+      "ideal": "kullan + ıl + abil + ir + lik",
+      "Multrenizer": {
+        "tokens": [
+          "kullanılabilir",
+          "lik"
+        ],
+        "count": 2
+      },
+      "Kumru-2B": {
+        "tokens": [
+          "kullanÄ±labilir",
+          "lik"
+        ],
+        "count": 2
+      },
+      "Turkcell-7B": {
+        "tokens": [
+          "kullanılabilir",
+          "lik"
+        ],
+        "count": 2
+      },
+      "GPT-2": {
+        "tokens": [
+          "k",
+          "ull",
+          "an",
+          "Ä±",
+          "l",
+          "abil",
+          "irl",
+          "ik"
+        ],
+        "count": 8
+      },
+      "Qwen-3": {
+        "tokens": [
+          "k",
+          "ullan",
+          "Ä±l",
+          "abilir",
+          "lik"
+        ],
+        "count": 5
+      },
+      "Mistral-3.1": {
+        "tokens": [
+          "k",
+          "ull",
+          "an",
+          "Ä±l",
+          "abil",
+          "irl",
+          "ik"
+        ],
+        "count": 7
+      }
+    },
+    {
+      "word": "özelleştirilebilecek",
+      "ideal": "özel + leştir + ile + bil + ecek",
+      "Multrenizer": {
+        "tokens": [
+          "özelleştiril",
+          "ebilecek"
+        ],
+        "count": 2
+      },
+      "Kumru-2B": {
+        "tokens": [
+          "Ã¶zelleÅŁtir",
+          "ilebil",
+          "ecek"
+        ],
+        "count": 3
+      },
+      "Turkcell-7B": {
+        "tokens": [
+          "özelleştir",
+          "ilebilecek"
+        ],
+        "count": 2
+      },
+      "GPT-2": {
+        "tokens": [
+          "Ã¶",
+          "z",
+          "elle",
+          "ÅŁ",
+          "t",
+          "ir",
+          "ile",
+          "b",
+          "ile",
+          "ce",
+          "k"
+        ],
+        "count": 11
+      },
+      "Qwen-3": {
+        "tokens": [
+          "Ã¶z",
+          "elle",
+          "ÅŁtir",
+          "ile",
+          "b",
+          "ile",
+          "cek"
+        ],
+        "count": 7
+      },
+      "Mistral-3.1": {
+        "tokens": [
+          "Ã¶z",
+          "elle",
+          "ÅŁtir",
+          "ile",
+          "b",
+          "ile",
+          "cek"
+        ],
+        "count": 7
+      }
+    },
+    {
+      "word": "düşünülebileceğini",
+      "ideal": "düşün + üle + bil + eceğ + in + i",
+      "Multrenizer": {
+        "tokens": [
+          "düşünül",
+          "ebileceğini"
+        ],
+        "count": 2
+      },
+      "Kumru-2B": {
+        "tokens": [
+          "dÃ¼ÅŁÃ¼nÃ¼l",
+          "ebil",
+          "eceÄŁini"
+        ],
+        "count": 3
+      },
+      "Turkcell-7B": {
+        "tokens": [
+          "düş",
+          "ünü",
+          "le",
+          "bileceğini"
+        ],
+        "count": 4
+      },
+      "GPT-2": {
+        "tokens": [
+          "d",
+          "Ã¼",
+          "ÅŁ",
+          "Ã¼",
+          "n",
+          "Ã¼",
+          "le",
+          "b",
+          "ile",
+          "ce",
+          "ÄŁ",
+          "ini"
+        ],
+        "count": 12
+      },
+      "Qwen-3": {
+        "tokens": [
+          "d",
+          "Ã¼ÅŁ",
+          "Ã¼nÃ¼",
+          "le",
+          "b",
+          "ile",
+          "ce",
+          "ÄŁini"
+        ],
+        "count": 8
+      },
+      "Mistral-3.1": {
+        "tokens": [
+          "d",
+          "Ã¼ÅŁ",
+          "Ã¼nÃ¼",
+          "leb",
+          "ile",
+          "ce",
+          "ÄŁini"
+        ],
+        "count": 7
+      }
+    }
+  ],
+  "morph_totals": {
+    "Multrenizer": 32,
+    "Kumru-2B": 35,
+    "Turkcell-7B": 38,
+    "GPT-2": 105,
+    "Qwen-3": 73,
+    "Mistral-3.1": 71
+  },
+  "normalization": {
+    "scores": {
+      "Multrenizer": "8/8",
+      "Kumru-2B": "0/8",
+      "Turkcell-7B": "0/8",
+      "GPT-2": "0/8",
+      "Qwen-3": "0/8",
+      "Mistral-3.1": "0/8"
+    },
+    "details": [
+      {
+        "input": "İstanbul",
+        "expected": "istanbul",
+        "rule": "İ -> i",
+        "Multrenizer": {
+          "result": "istanbul",
+          "correct": true
+        },
+        "Kumru-2B": {
+          "result": "i̇stanbul",
+          "correct": false
+        },
+        "Turkcell-7B": {
+          "result": "i̇stanbul",
+          "correct": false
+        },
+        "GPT-2": {
+          "result": "i̇stanbul",
+          "correct": false
+        },
+        "Qwen-3": {
+          "result": "i̇stanbul",
+          "correct": false
+        },
+        "Mistral-3.1": {
+          "result": "i̇stanbul",
+          "correct": false
+        }
+      },
+      {
+        "input": "IŞIK",
+        "expected": "ışık",
+        "rule": "I -> ı",
+        "Multrenizer": {
+          "result": "ışık",
+          "correct": true
+        },
+        "Kumru-2B": {
+          "result": "işik",
+          "correct": false
+        },
+        "Turkcell-7B": {
+          "result": "işik",
+          "correct": false
+        },
+        "GPT-2": {
+          "result": "işik",
+          "correct": false
+        },
+        "Qwen-3": {
+          "result": "işik",
+          "correct": false
+        },
+        "Mistral-3.1": {
+          "result": "işik",
+          "correct": false
+        }
+      },
+      {
+        "input": "İŞ",
+        "expected": "iş",
+        "rule": "İ -> i",
+        "Multrenizer": {
+          "result": "iş",
+          "correct": true
+        },
+        "Kumru-2B": {
+          "result": "i̇ş",
+          "correct": false
+        },
+        "Turkcell-7B": {
+          "result": "i̇ş",
+          "correct": false
+        },
+        "GPT-2": {
+          "result": "i̇ş",
+          "correct": false
+        },
+        "Qwen-3": {
+          "result": "i̇ş",
+          "correct": false
+        },
+        "Mistral-3.1": {
+          "result": "i̇ş",
+          "correct": false
+        }
+      },
+      {
+        "input": "SIR",
+        "expected": "sır",
+        "rule": "I -> ı (not 'sir')",
+        "Multrenizer": {
+          "result": "sır",
+          "correct": true
+        },
+        "Kumru-2B": {
+          "result": "sir",
+          "correct": false
+        },
+        "Turkcell-7B": {
+          "result": "sir",
+          "correct": false
+        },
+        "GPT-2": {
+          "result": "sir",
+          "correct": false
+        },
+        "Qwen-3": {
+          "result": "sir",
+          "correct": false
+        },
+        "Mistral-3.1": {
+          "result": "sir",
+          "correct": false
+        }
+      },
+      {
+        "input": "İLK",
+        "expected": "ilk",
+        "rule": "İ -> i",
+        "Multrenizer": {
+          "result": "ilk",
+          "correct": true
+        },
+        "Kumru-2B": {
+          "result": "i̇lk",
+          "correct": false
+        },
+        "Turkcell-7B": {
+          "result": "i̇lk",
+          "correct": false
+        },
+        "GPT-2": {
+          "result": "i̇lk",
+          "correct": false
+        },
+        "Qwen-3": {
+          "result": "i̇lk",
+          "correct": false
+        },
+        "Mistral-3.1": {
+          "result": "i̇lk",
+          "correct": false
+        }
+      },
+      {
+        "input": "IRAK",
+        "expected": "ırak",
+        "rule": "I -> ı",
+        "Multrenizer": {
+          "result": "ırak",
+          "correct": true
+        },
+        "Kumru-2B": {
+          "result": "irak",
+          "correct": false
+        },
+        "Turkcell-7B": {
+          "result": "irak",
+          "correct": false
+        },
+        "GPT-2": {
+          "result": "irak",
+          "correct": false
+        },
+        "Qwen-3": {
+          "result": "irak",
+          "correct": false
+        },
+        "Mistral-3.1": {
+          "result": "irak",
+          "correct": false
+        }
+      },
+      {
+        "input": "İNSAN",
+        "expected": "insan",
+        "rule": "İ -> i",
+        "Multrenizer": {
+          "result": "insan",
+          "correct": true
+        },
+        "Kumru-2B": {
+          "result": "i̇nsan",
+          "correct": false
+        },
+        "Turkcell-7B": {
+          "result": "i̇nsan",
+          "correct": false
+        },
+        "GPT-2": {
+          "result": "i̇nsan",
+          "correct": false
+        },
+        "Qwen-3": {
+          "result": "i̇nsan",
+          "correct": false
+        },
+        "Mistral-3.1": {
+          "result": "i̇nsan",
+          "correct": false
+        }
+      },
+      {
+        "input": "ISITMAK",
+        "expected": "ısıtmak",
+        "rule": "I -> ı",
+        "Multrenizer": {
+          "result": "ısıtmak",
+          "correct": true
+        },
+        "Kumru-2B": {
+          "result": "isitmak",
+          "correct": false
+        },
+        "Turkcell-7B": {
+          "result": "isitmak",
+          "correct": false
+        },
+        "GPT-2": {
+          "result": "isitmak",
+          "correct": false
+        },
+        "Qwen-3": {
+          "result": "isitmak",
+          "correct": false
+        },
+        "Mistral-3.1": {
+          "result": "isitmak",
+          "correct": false
+        }
+      }
+    ]
+  },
+  "code_switching_examples": [
+    {
+      "sentence": "Deploy sürecinde unexpected bir error aldık, rollback yapmamız gerekiyor.",
+      "Multrenizer": {
+        "tokens": [
+          "deploy",
+          "sürecinde",
+          "unexpected",
+          "bir",
+          "error",
+          "aldık",
+          ",",
+          "roll",
+          "back",
+          "yapmamız",
+          "gerekiyor",
+          "."
+        ],
+        "count": 12
+      },
+      "Kumru-2B": {
+        "tokens": [
+          "Dep",
+          "loy",
+          "sÃ¼recinde",
+          "un",
+          "exp",
+          "ected",
+          "bir",
+          "err",
+          "or",
+          "al",
+          "dÄ±k",
+          ",",
+          "rol",
+          "l",
+          "back",
+          "yap",
+          "mamÄ±zgerekiyor",
+          "."
+        ],
+        "count": 18
+      },
+      "Turkcell-7B": {
+        "tokens": [
+          "De",
+          "ploy",
+          "sürecinde",
+          "unexpected",
+          "bir",
+          "error",
+          "aldık",
+          ",",
+          "roll",
+          "back",
+          "yapmamız",
+          "gerekiyor",
+          "."
+        ],
+        "count": 13
+      },
+      "GPT-2": {
+        "tokens": [
+          "Deploy",
+          "s",
+          "Ã¼",
+          "rec",
+          "ind",
+          "e",
+          "unexpected",
+          "bir",
+          "error",
+          "a",
+          "ld",
+          "Ä±",
+          "k",
+          ",",
+          "roll",
+          "back",
+          "y",
+          "ap",
+          "m",
+          "am",
+          "Ä±",
+          "z",
+          "g",
+          "ere",
+          "ki",
+          "y",
+          "or",
+          "."
+        ],
+        "count": 28
+      },
+      "Qwen-3": {
+        "tokens": [
+          "Deploy",
+          "sÃ¼rec",
+          "inde",
+          "unexpected",
+          "bir",
+          "error",
+          "ald",
+          "Ä±k",
+          ",",
+          "rollback",
+          "yap",
+          "m",
+          "am",
+          "Ä±z",
+          "gere",
+          "ki",
+          "yor",
+          "."
+        ],
+        "count": 18
+      },
+      "Mistral-3.1": {
+        "tokens": [
+          "Deploy",
+          "sÃ¼",
+          "rec",
+          "inde",
+          "unexpected",
+          "bir",
+          "error",
+          "ald",
+          "Ä±k",
+          ",",
+          "roll",
+          "back",
+          "yap",
+          "mam",
+          "Ä±z",
+          "gere",
+          "ki",
+          "yor",
+          "."
+        ],
+        "count": 19
+      }
+    },
+    {
+      "sentence": "Bu feature'ı implement ederken edge case'leri handle etmeyi unutmayalım.",
+      "Multrenizer": {
+        "tokens": [
+          "bu",
+          "feature",
+          "'",
+          "ı",
+          "implement",
+          "ederken",
+          "edge",
+          "case",
+          "'",
+          "leri",
+          "handle",
+          "etmeyi",
+          "unutmaya",
+          "lım",
+          "."
+        ],
+        "count": 15
+      },
+      "Kumru-2B": {
+        "tokens": [
+          "Bu",
+          "fe",
+          "ature",
+          "'",
+          "Ä±",
+          "imp",
+          "lement",
+          "ederken",
+          "ed",
+          "ge",
+          "cas",
+          "e",
+          "'",
+          "leri",
+          "hand",
+          "le",
+          "etmeyi",
+          "unutma",
+          "yalÄ±m",
+          "."
+        ],
+        "count": 20
+      },
+      "Turkcell-7B": {
+        "tokens": [
+          "Bu",
+          "feature",
+          "'",
+          "ı",
+          "implement",
+          "ederken",
+          "edge",
+          "case",
+          "'",
+          "leri",
+          "handle",
+          "etmeyi",
+          "unut",
+          "mayalım",
+          "."
+        ],
+        "count": 15
+      },
+      "GPT-2": {
+        "tokens": [
+          "Bu",
+          "feature",
+          "'",
+          "Ä±",
+          "implement",
+          "ed",
+          "er",
+          "ken",
+          "edge",
+          "case",
+          "'",
+          "ler",
+          "i",
+          "handle",
+          "et",
+          "me",
+          "yi",
+          "un",
+          "ut",
+          "may",
+          "al",
+          "Ä±",
+          "m",
+          "."
+        ],
+        "count": 24
+      },
+      "Qwen-3": {
+        "tokens": [
+          "Bu",
+          "feature",
+          "'",
+          "Ä±",
+          "implement",
+          "ed",
+          "er",
+          "ken",
+          "edge",
+          "case",
+          "'",
+          "leri",
+          "handle",
+          "et",
+          "m",
+          "ey",
+          "i",
+          "un",
+          "ut",
+          "may",
+          "alÄ±m",
+          "."
+        ],
+        "count": 22
+      },
+      "Mistral-3.1": {
+        "tokens": [
+          "Bu",
+          "feature",
+          "'Ä±",
+          "implement",
+          "eder",
+          "ken",
+          "edge",
+          "case",
+          "'",
+          "leri",
+          "handle",
+          "et",
+          "me",
+          "yi",
+          "un",
+          "ut",
+          "may",
+          "al",
+          "Ä±m",
+          "."
+        ],
+        "count": 20
+      }
+    },
+    {
+      "sentence": "Meeting'i reschedule edelim, stakeholder'lar available değil bugün.",
+      "Multrenizer": {
+        "tokens": [
+          "meeting",
+          "'",
+          "i",
+          "reschedule",
+          "edelim",
+          ",",
+          "stakeholder",
+          "'",
+          "lar",
+          "availab",
+          "le",
+          "değil",
+          "bugün",
+          "."
+        ],
+        "count": 14
+      },
+      "Kumru-2B": {
+        "tokens": [
+          "Me",
+          "eting",
+          "'",
+          "i",
+          "res",
+          "ch",
+          "ed",
+          "ule",
+          "edelim",
+          ",",
+          "s",
+          "tak",
+          "eh",
+          "ol",
+          "der",
+          "'",
+          "lar",
+          "ava",
+          "ila",
+          "ble",
+          "deÄŁil",
+          "bugÃ¼n",
+          "."
+        ],
+        "count": 23
+      },
+      "Turkcell-7B": {
+        "tokens": [
+          "Meeting",
+          "'",
+          "i",
+          "res",
+          "che",
+          "dule",
+          "edelim",
+          ",",
+          "stake",
+          "holder",
+          "'",
+          "lar",
+          "available",
+          "▁",
+          "deği",
+          "l",
+          "bugün",
+          "."
+        ],
+        "count": 18
+      },
+      "GPT-2": {
+        "tokens": [
+          "Me",
+          "eting",
+          "'",
+          "i",
+          "res",
+          "che",
+          "dule",
+          "ed",
+          "el",
+          "im",
+          ",",
+          "stake",
+          "holder",
+          "'",
+          "lar",
+          "available",
+          "de",
+          "ÄŁ",
+          "il",
+          "bug",
+          "Ã¼",
+          "n",
+          "."
+        ],
+        "count": 23
+      },
+      "Qwen-3": {
+        "tokens": [
+          "Meeting",
+          "'i",
+          "res",
+          "chedule",
+          "ed",
+          "elim",
+          ",",
+          "stake",
+          "holder",
+          "'",
+          "lar",
+          "available",
+          "deÄŁil",
+          "bugÃ¼n",
+          "."
+        ],
+        "count": 15
+      },
+      "Mistral-3.1": {
+        "tokens": [
+          "Meeting",
+          "'i",
+          "res",
+          "chedule",
+          "ed",
+          "el",
+          "im",
+          ",",
+          "stake",
+          "holder",
+          "'",
+          "lar",
+          "available",
+          "deÄŁil",
+          "bug",
+          "Ã¼n",
+          "."
+        ],
+        "count": 17
+      }
+    },
+    {
+      "sentence": "Code review'da feedback aldım, design pattern'ı değiştirmemiz lazım.",
+      "Multrenizer": {
+        "tokens": [
+          "code",
+          "review",
+          "'",
+          "da",
+          "feedback",
+          "aldı",
+          "m",
+          ",",
+          "design",
+          "pattern",
+          "'",
+          "ı",
+          "değiştirmemiz",
+          "lazım",
+          "."
+        ],
+        "count": 15
+      },
+      "Kumru-2B": {
+        "tokens": [
+          "Co",
+          "de",
+          "rev",
+          "i",
+          "ew",
+          "'",
+          "da",
+          "fe",
+          "ed",
+          "back",
+          "aldÄ±m",
+          ",",
+          "de",
+          "sig",
+          "n",
+          "pat",
+          "tern",
+          "'",
+          "Ä±",
+          "deÄŁiÅŁtir",
+          "mem",
+          "iz",
+          "lazÄ±m",
+          "."
+        ],
+        "count": 24
+      },
+      "Turkcell-7B": {
+        "tokens": [
+          "Code",
+          "review",
+          "'",
+          "da",
+          "feedback",
+          "aldım",
+          ",",
+          "design",
+          "pattern",
+          "'",
+          "ı",
+          "değiştir",
+          "memiz",
+          "lazım",
+          "."
+        ],
+        "count": 15
+      },
+      "GPT-2": {
+        "tokens": [
+          "Code",
+          "review",
+          "'d",
+          "a",
+          "feedback",
+          "a",
+          "ld",
+          "Ä±",
+          "m",
+          ",",
+          "design",
+          "pattern",
+          "'",
+          "Ä±",
+          "de",
+          "ÄŁ",
+          "i",
+          "ÅŁ",
+          "t",
+          "irm",
+          "em",
+          "iz",
+          "laz",
+          "Ä±",
+          "m",
+          "."
+        ],
+        "count": 26
+      },
+      "Qwen-3": {
+        "tokens": [
+          "Code",
+          "review",
+          "'d",
+          "a",
+          "feedback",
+          "ald",
+          "Ä±m",
+          ",",
+          "design",
+          "pattern",
+          "'",
+          "Ä±",
+          "deÄŁi",
+          "ÅŁt",
+          "irm",
+          "em",
+          "iz",
+          "lazÄ±m",
+          "."
+        ],
+        "count": 19
+      },
+      "Mistral-3.1": {
+        "tokens": [
+          "Code",
+          "review",
+          "'d",
+          "a",
+          "feedback",
+          "ald",
+          "Ä±m",
+          ",",
+          "design",
+          "pattern",
+          "'Ä±",
+          "deÄŁi",
+          "ÅŁt",
+          "irm",
+          "em",
+          "iz",
+          "laz",
+          "Ä±m",
+          "."
+        ],
+        "count": 19
+      }
+    },
+    {
+      "sentence": "merge'lemek istediğim branch conflict veriyor.",
+      "Multrenizer": {
+        "tokens": [
+          "merge",
+          "'",
+          "lemek",
+          "istediğim",
+          "branch",
+          "conflict",
+          "veriyor",
+          "."
+        ],
+        "count": 8
+      },
+      "Kumru-2B": {
+        "tokens": [
+          "mer",
+          "ge",
+          "'",
+          "lemek",
+          "istediÄŁim",
+          "b",
+          "ran",
+          "ch",
+          "con",
+          "f",
+          "lic",
+          "t",
+          "veriyor",
+          "."
+        ],
+        "count": 14
+      },
+      "Turkcell-7B": {
+        "tokens": [
+          "merge",
+          "'",
+          "lemek",
+          "istediğim",
+          "branch",
+          "conflict",
+          "veriyor",
+          "."
+        ],
+        "count": 8
+      },
+      "GPT-2": {
+        "tokens": [
+          "mer",
+          "ge",
+          "'",
+          "lem",
+          "ek",
+          "is",
+          "ted",
+          "i",
+          "ÄŁ",
+          "im",
+          "branch",
+          "conflict",
+          "ver",
+          "iy",
+          "or",
+          "."
+        ],
+        "count": 16
+      },
+      "Qwen-3": {
+        "tokens": [
+          "merge",
+          "'",
+          "lem",
+          "ek",
+          "istediÄŁ",
+          "im",
+          "branch",
+          "conflict",
+          "ver",
+          "iyor",
+          "."
+        ],
+        "count": 11
+      },
+      "Mistral-3.1": {
+        "tokens": [
+          "merge",
+          "'",
+          "le",
+          "mek",
+          "ist",
+          "edi",
+          "ÄŁ",
+          "im",
+          "branch",
+          "conflict",
+          "ver",
+          "iyor",
+          "."
+        ],
+        "count": 13
+      }
+    }
+  ],
+  "summary": {
+    "vocab_sizes": {
+      "Multrenizer": 25917,
+      "Kumru-2B": 50176,
+      "Turkcell-7B": 48351,
+      "GPT-2": 50257,
+      "Qwen-3": 151643,
+      "Mistral-3.1": 131072
+    },
+    "tr_fertility": {
+      "Multrenizer": 1.627,
+      "Kumru-2B": 1.649,
+      "Turkcell-7B": 1.917,
+      "GPT-2": 3.785,
+      "Qwen-3": 2.616,
+      "Mistral-3.1": 2.384
+    },
+    "en_fertility": {
+      "Multrenizer": 1.525,
+      "Kumru-2B": 2.151,
+      "Turkcell-7B": 1.555,
+      "GPT-2": 1.314,
+      "Qwen-3": 1.372,
+      "Mistral-3.1": 1.381
+    },
+    "tr_compression": {
+      "Multrenizer": 4.783,
+      "Kumru-2B": 4.719,
+      "Turkcell-7B": 4.06,
+      "GPT-2": 2.056,
+      "Qwen-3": 2.976,
+      "Mistral-3.1": 3.265
+    },
+    "en_compression": {
+      "Multrenizer": 4.148,
+      "Kumru-2B": 2.942,
+      "Turkcell-7B": 4.068,
+      "GPT-2": 4.816,
+      "Qwen-3": 4.61,
+      "Mistral-3.1": 4.58
+    },
+    "tr_total_tokens": {
+      "Multrenizer": 130844,
+      "Kumru-2B": 132637,
+      "Turkcell-7B": 154166,
+      "GPT-2": 304345,
+      "Qwen-3": 210334,
+      "Mistral-3.1": 191682
+    },
+    "en_total_tokens": {
+      "Multrenizer": 157027,
+      "Kumru-2B": 221420,
+      "Turkcell-7B": 160121,
+      "GPT-2": 135235,
+      "Qwen-3": 141275,
+      "Mistral-3.1": 142196
+    },
+    "morph_totals": {
+      "Multrenizer": 32,
+      "Kumru-2B": 35,
+      "Turkcell-7B": 38,
+      "GPT-2": 105,
+      "Qwen-3": 73,
+      "Mistral-3.1": 71
+    },
+    "normalization_scores": {
+      "Multrenizer": 8,
+      "Kumru-2B": 0,
+      "Turkcell-7B": 0,
+      "GPT-2": 0,
+      "Qwen-3": 0,
+      "Mistral-3.1": 0
+    },
+    "normalization_total": 8
+  }
+}
