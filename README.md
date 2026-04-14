@@ -1,3 +1,18 @@
+---
+license: apache-2.0
+language:
+- tr
+- en
+library_name: transformers
+tags:
+- tokenizer
+- tokenizers
+- unigram
+- turkish
+- english
+- bilingual
+---
+
 # Multrenizer
 
 Multrenizer is a bilingual English-Turkish Unigram tokenizer built from scratch for Turkish morphology, Turkish-aware casing, and mixed TR-EN text.
@@ -5,6 +20,7 @@ Multrenizer is a bilingual English-Turkish Unigram tokenizer built from scratch 
 ## Links
 
 - Repository: [github.com/fzengin19/multrenizer](https://github.com/fzengin19/multrenizer)
+- Hugging Face: [huggingface.co/fzengin18/multrenizer](https://huggingface.co/fzengin18/multrenizer)
 
 ## Why Multrenizer?
 
@@ -79,27 +95,27 @@ Selected examples:
 ```text
 güzelleştirilmiş
   Multrenizer: güzel + leştirilmiş                                   [2 tokens]
-  Kumru-2B: 2 tokens
+  Kumru-2B: gÃ¼zel + leÅŁtirilmiÅŁ                                  [2 tokens]
   Turkcell-7B: güzel + leştirilmiş                                   [2 tokens]
-  Qwen-3: 5 tokens
-  Mistral-3.1: 5 tokens
-  GPT-2: 10 tokens
+  Qwen-3: g + Ã¼z + elle + ÅŁtir + ilmiÅŁ                         [5 tokens]
+  Mistral-3.1: g + Ã¼z + elle + ÅŁtir + ilmiÅŁ                     [5 tokens]
+  GPT-2: g + Ã¼ + z + elle + ÅŁ + t + ir + il + mi + ÅŁ          [10 tokens]
 
 İstanbul'da
   Multrenizer: istanbul + ' + da                                     [3 tokens]
-  Kumru-2B: 3 tokens
+  Kumru-2B: Ä°stanbul + ' + da                                      [3 tokens]
   Turkcell-7B: İstanbul + ' + da                                     [3 tokens]
-  Qwen-3: 4 tokens
-  Mistral-3.1: 4 tokens
-  GPT-2: 5 tokens
+  Qwen-3: Ä° + stanbul + 'd + a                                    [4 tokens]
+  Mistral-3.1: Ä° + stanbul + 'd + a                               [4 tokens]
+  GPT-2: Ä + ° + stanbul + 'd + a                                  [5 tokens]
 
 Afyonkarahisarlılaştıramadıklarımızdan
   Multrenizer: afyonkarahisar + lı + laştı + r + ama + dıkları + mızda + n   [8 tokens]
-  Kumru-2B: 8 tokens
-  Turkcell-7B: 9 tokens
-  Qwen-3: 16 tokens
-  Mistral-3.1: 16 tokens
-  GPT-2: 21 tokens
+  Kumru-2B: Af + yonkarahisar + lÄ± + laÅŁtÄ±r + ama + dÄ±k + larÄ±mÄ±z + dan [8 tokens]
+  Turkcell-7B: Afyon + kar + ah + is + arlı + laştır + a + madık + larımızdan [9 tokens]
+  Qwen-3: Af + yon + kar + ah + is + ar + lÄ± + la + ÅŁt + Ä± + ram + ad + Ä±kl + ar + Ä±mÄ±z + dan [16 tokens]
+  Mistral-3.1: Af + yon + kar + ah + is + arl + Ä± + laÅŁt + Ä± + ram + ad + Ä±klarÄ± + m + Ä± + zd + an [16 tokens]
+  GPT-2: Af + yon + kar + ah + is + arl + Ä± + la + ÅŁ + t + Ä± + ram + ad + Ä± + k + lar + Ä± + m + Ä± + z + dan [21 tokens]
 ```
 
 ### Turkish I/i Normalization
@@ -154,7 +170,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Use the shipped tokenizer
+### Use the shipped tokenizer locally
 
 ```python
 from tokenizers import Tokenizer
@@ -169,6 +185,27 @@ print(tok.normalizer.normalize_str("IŞIK"))
 # 'ışık'
 ```
 
+### Load from Hugging Face
+
+```python
+from tokenizers import Tokenizer
+
+tok = Tokenizer.from_pretrained("fzengin18/multrenizer")
+
+encoded = tok.encode("İstanbul'da güzel bir gün")
+print(encoded.tokens)
+# ['<s>', 'istanbul', "'", 'da', 'güzel', 'bir', 'gün', '</s>']
+```
+
+If you use `transformers`, this also works:
+
+```python
+from transformers import AutoTokenizer
+
+tok = AutoTokenizer.from_pretrained("fzengin18/multrenizer")
+print(tok.tokenize("İstanbul'da güzel bir gün"))
+```
+
 ### Train from scratch
 
 ```bash
@@ -180,8 +217,8 @@ python train_tokenizer.py --data-dir data/
 
 # 3. Optional: push tokenizer files to Hugging Face Hub
 python train_tokenizer.py --data-dir data/ \
-  --repo-id your-username/multrenizer \
-  --hf-token hf_xxxxx
+  --repo-id fzengin18/multrenizer \
+  --hf-token "$HF_TOKEN"
 ```
 
 ### Run benchmarks
